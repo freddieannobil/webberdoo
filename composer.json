@@ -1,6 +1,6 @@
 {
   "name": "webberdoo/webberdoo",
-  "description": "The WebberdooFramework is a PHP Micro Framework built with Symfony. ",
+  "description": "The Webberdoo Skeleton Framework is a PHP Micro Framework built with Symfony. ",
   "homepage": "https://github.com/webberdoo/webberdoo",
   "keywords": [
     "Framework", "PHP", "Symfony"
