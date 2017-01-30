@@ -1,0 +1,38 @@
+{% extends 'App/layout/base.html.twig' %}
+
+{% block title %}Webberdoo{% endblock %}
+
+{% block body %}
+
+    <section class="page-header">
+
+
+        <section class="row">
+
+            <side class="large-3 medium-3 columns">
+                {% include 'App/layout/inc/user_home_side.html.twig' %}
+            </side>
+
+            <main class="large-9 medium-9 columns">
+
+                    <h2><span class="icon"><i class="fa fa-film" aria-hidden="true"></i></span> Submit a Video</h2>
+
+                  <div class="submit">
+                      <!-- form start -->
+                      {{ form_start(form) }}
+                      <div class="box-body">
+                          {{ form_widget(form) }}
+
+                          <button type="submit" class="button" formnovalidate>Submit Video</button>
+                      </div>
+                      {{ form_end(form) }}
+                  </div>
+            </main>
+
+        </section>
+
+
+    </section>
+
+
+{% endblock %}

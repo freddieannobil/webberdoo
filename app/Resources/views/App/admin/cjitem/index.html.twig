@@ -1,0 +1,48 @@
+
+{% extends 'App/layout/inc/admin_table_layout.html.twig' %}
+
+
+{% block title %}Items{% endblock %}
+
+{% block table_head %}
+    <th>Id</th>
+    <th>Title</th>
+    <th>Regularprice</th>
+    <th>Saleprice</th>
+    <th>Price</th>
+    <th>Sku</th>
+    <th>Image</th>
+    <th>Featured</th>
+    <th></th>
+{% endblock %}
+
+{% block table_data %}
+
+    {% for cJItem in cJItems %}
+        <tr>
+            <td><a href="{{ path('admin_cjitem_show', { 'id': cJItem.id }) }}">{{ cJItem.id }}</a></td>
+            <td>{{ cJItem.title }}</td>
+            <td>{{ cJItem.regularPrice }}</td>
+            <td>{{ cJItem.salePrice }}</td>
+            <td>{{ cJItem.price }}</td>
+            <td>{{ cJItem.sku }}</td>
+            <td><img src="{{ cJItem.image }}" alt="{{ cJItem.title }}"></td>
+            <td>{% if cJItem.featured %}Yes{% else %}No{% endif %}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('admin_cjitem_edit', { 'id': cJItem.id }) }}" class="btn btn-primary">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_cjitem_new') }}" class="btn btn-primary">create a new item</a>
+        </li>
+    </ul>
+{% endblock %}
+

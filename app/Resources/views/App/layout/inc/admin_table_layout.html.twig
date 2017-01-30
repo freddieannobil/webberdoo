@@ -1,0 +1,36 @@
+{% extends 'App/layout/admin_base.html.twig' %}
+
+{% block body %}
+<section class="content">
+    <div class="row">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">{% block title %}{% endblock %}</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            {% block table_head %}{% endblock %}
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% block table_data %}{% endblock %}
+                        </tbody>
+                        <tfoot>
+                        <tr>
+
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+
+
+    </div>
+</section>
+
+
+{% endblock %}

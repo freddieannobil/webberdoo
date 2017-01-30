@@ -1,0 +1,21 @@
+{% extends 'FD/layout/base.html.twig' %}
+{% block body %}
+    <style>
+        .not-found{
+            margin: 5em 0 0 0;
+            text-align: center;
+        }
+    </style>
+    <div class="row">
+        <h1 class="not-found">Oh no! Page not found</h1>
+
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            {# ... #}
+        {% endif %}
+
+        <p class="not-found">
+            The requested page couldn't be located. Checkout for any URL
+            misspelling or <a href="{{ path('homepage') }}">return to the homepage</a>.
+        </p>
+    </div>
+{% endblock %}

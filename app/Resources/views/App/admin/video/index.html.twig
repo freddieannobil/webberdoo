@@ -1,0 +1,86 @@
+{% extends 'App/layout/inc/admin_table_layout.html.twig' %}
+
+
+{% block title %}Videos{% endblock %}
+
+{% block table_head %}
+    <th>Id</th>
+    <th>Title</th>
+    <th>Thumbnail</th>
+    <th>Platform</th>
+    <th>Count visitor</th>
+    <th>Status</th>
+    <th>Likes</th>
+    <th>Submitted By</th>
+    <th>Featured</th>
+    <th></th>
+{% endblock %}
+
+{% block table_data %}
+ {% for video in videos %}
+     <tr>
+         <td><a href="{{ path('admin_video_show', { 'id': video.id }) }}">{{ video.id }}</a></td>
+         <td>{{ video.title }}</td>
+         <td><img src="{{ video.thumbnailDefault }}" alt="image"></td>
+         <td>{{ video.platform }}</td>
+         <td>
+             {% if video.countVisitor %}
+                 {{ video.countVisitor }}
+             {% else %}
+                 0
+             {% endif %}
+         </td>
+         <td>
+             {% if video.status %}
+                 <div class="btn btn-success" disabled="disabled">Active</div>
+             {% else %}
+                 <div class="btn btn-default" disabled="disabled">InActive</div>
+             {% endif %}
+         </td>
+         <td>
+             0
+         </td>
+         <td>
+             {% for user in video.getUser %}
+                 {{ user.username}}
+             {% endfor %}
+         </td>
+         <td>
+             {% if video.featured %}
+                 <div class="btn btn-success" disabled="disabled">Yes</div>
+             {% else %}
+                 <div class="btn btn-default" disabled="disabled">No</div>
+             {% endif %}
+         </td>
+         <td>
+             <ul>
+                 <li>
+                     <a href="{{ path('admin_video_edit', { 'id': video.id }) }}" class="btn btn-warning">
+                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                 </li>
+             </ul>
+         </td>
+     </tr>
+ {% endfor %}
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

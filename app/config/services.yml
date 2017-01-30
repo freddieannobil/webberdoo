@@ -1,0 +1,64 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+    app.security.login_form_authenticator:
+         class: Webberdoo\AppBundle\Security\LoginFormAuthenticator
+         autowire: true
+    app.user_emails:
+                class: Webberdoo\AppBundle\Service\Emails
+                arguments: ['@service_container']
+    app.cache:
+          class: Webberdoo\AppBundle\Service\Templating\WdooCache
+
+    app.templating:
+             class: Webberdoo\AppBundle\Service\Templating\WdooTemplate
+             arguments: ['@service_container']
+    app.navmenu:
+           class: Webberdoo\AppBundle\Service\NavMenu
+           arguments: ['@service_container', "%theme_name%"]
+    app.widget:
+            class: Webberdoo\AppBundle\Service\Widgets
+            arguments: ['@service_container']
+    app.setting:
+        class: Webberdoo\AppBundle\Service\SiteSetting
+        arguments: ['@service_container']
+    app.social_share:
+        class: Webberdoo\AppBundle\Service\SocialShare
+    app.youtubeapi:
+        class: Webberdoo\AppBundle\Service\YouTubeApi
+        arguments: ['@service_container']
+    app.youtubedownload:
+        class: Webberdoo\AppBundle\Service\YouTubeDownloadClass
+    app.wdoopaginator:
+            class: Webberdoo\AppBundle\Service\Pagination\Paginator
+    app.gravatar:
+            class: Webberdoo\AppBundle\Service\Gravatar
+    app.notify:
+           class: Webberdoo\AppBundle\Service\Notify
+    app.random_string:
+           class: Webberdoo\AppBundle\Service\RandomString
+    app.sweet_alerts:
+           class: Webberdoo\AppBundle\Service\SweetAlerts
+
+
+  #        class: Webberdoo\AppBundle\Doctrine\HashPasswordListner
+   #       autowire: true
+   #       tags:
+    #        - { name: doctrine.event_subscriber}
+    salavert.twig.time_ago:
+            class: Salavert\Twig\Extension\TimeAgoExtension
+            arguments: ["@translator"]
+            tags:
+                - { name: twig.extension }
+
+  #  app.navmenu:
+ #      class: AppBundle\Services\NavMenu
+  #     arguments: ['@service_container']
+
+
+#    service_name:
+#        class: AppBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]

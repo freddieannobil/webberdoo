@@ -1,0 +1,47 @@
+
+
+{% extends 'App/layout/inc/admin_table_layout.html.twig' %}
+
+
+{% block title %}Widgets{% endblock %}
+
+{% block table_head %}
+    <th>Id</th>
+    <th>Title</th>
+    <th>Position</th>
+    <th>Status</th>
+    <th></th>
+{% endblock %}
+
+{% block table_data %}
+
+    {% for widget in widgets %}
+        <tr>
+            <td><a href="{{ path('admin_widget_edit', { 'id': widget.id }) }}">{{ widget.id }}</a></td>
+            <td>{{ widget.title }}</td>
+            <td>{{ widget.position }}</td>
+            <td>
+                {% if widget.status %}
+                    <div class="btn btn-success" disabled="disabled">Active</div>
+                {% else %}
+                    <div class="btn btn-default" disabled="disabled">InActive</div>
+                {% endif %}
+            </td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('admin_widget_edit', { 'id': widget.id }) }}" class="btn btn-primary">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_widget_new') }}" class="btn btn-primary">create a widget</a>
+        </li>
+    </ul>
+{% endblock %}
+

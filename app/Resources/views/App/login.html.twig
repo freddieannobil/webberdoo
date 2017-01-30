@@ -1,0 +1,44 @@
+{% extends 'App/layout/base.html.twig' %}
+{% form_theme form 'FD/form/errors.html.twig' %}
+
+{% block title %}Webberdoo{% endblock %}
+
+{% block body %}
+
+    {% if app.session.flashBag.has('success_activation') %}
+        {% for msg in app.session.flashBag.get('success_activation') %}
+            {{ msg|raw }}
+        {% endfor %}
+    {% endif %}
+
+    {% if app.session.flashBag.has('success_registration') %}
+        {% for msg in app.session.flashBag.get('success_registration') %}
+            {{ msg|raw }}
+        {% endfor %}
+    {% endif %}
+
+    <section class="page-header">
+        <div class="row">
+            <div class="small-6 large-centered columns">
+                <div id="auth">
+                <h1><i class="fa fa-user" aria-hidden="true"></i> Login</h1>
+
+                {% if error %}
+                    <div class="alert label">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                {{ form_start(form) }}
+
+                {{ form_row(form._username) }}
+                {{ form_row(form._password) }}
+
+                <button type="submit" class="button" formnovalidate><span class="fa fa-lock"></span> Login now</button>
+                    <p><a href="{{ path('recover_password') }}">Forgot password?</a></p>
+                {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+{% endblock %}

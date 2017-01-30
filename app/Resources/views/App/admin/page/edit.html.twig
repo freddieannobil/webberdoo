@@ -1,0 +1,31 @@
+{% extends 'App/layout/inc/admin_box_layout.html.twig' %}
+
+
+{% block title %}Page Edit{% endblock %}
+
+{% block form %}
+    <!-- form start -->
+
+    {{ form_start(edit_form) }}
+    <div class="box-body">
+        {{ form_widget(edit_form) }}
+
+        <button type="submit" class="btn btn-primary btn-lg btn-block" formnovalidate>Edit</button>
+    </div>
+    {{ form_end(edit_form) }}
+{% endblock %}
+
+{% block links %}
+    <ul>
+        <li>
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete" class="btn btn-primary btn-lg btn-block">
+            {{ form_end(delete_form) }}
+        </li>
+        <p></p>
+        <li>
+            <a href="{{ path('admin_page_index') }}" class="btn btn-default btn-lg btn-block">Back to the page list</a>
+        </li>
+    </ul>
+
+{% endblock %}

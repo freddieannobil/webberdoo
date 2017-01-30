@@ -1,0 +1,104 @@
+{% extends 'CJ/layout/admin_base.html.twig' %}
+
+{% block body %}
+    <h1>Video</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ video.id }}</td>
+            </tr>
+            <tr>
+                <th>Videoapiid</th>
+                <td>{{ video.videoApiId }}</td>
+            </tr>
+            <tr>
+                <th>Published</th>
+                <td>{{ video.published }}</td>
+            </tr>
+            <tr>
+                <th>Duration</th>
+                <td>{{ video.duration }}</td>
+            </tr>
+            <tr>
+                <th>Channelcid</th>
+                <td>{{ video.channelCid }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ video.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ video.description }}</td>
+            </tr>
+            <tr>
+                <th>Keyword</th>
+                <td>{{ video.keyword }}</td>
+            </tr>
+            <tr>
+                <th>Thumbnaildefault</th>
+                <td>{{ video.thumbnailDefault }}</td>
+            </tr>
+            <tr>
+                <th>Thumbnailmedium</th>
+                <td>{{ video.thumbnailMedium }}</td>
+            </tr>
+            <tr>
+                <th>Thumbnailhigh</th>
+                <td>{{ video.thumbnailHigh }}</td>
+            </tr>
+            <tr>
+                <th>Channeltitle</th>
+                <td>{{ video.channelTitle }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ video.slug }}</td>
+            </tr>
+            <tr>
+                <th>Platform</th>
+                <td>{{ video.platform }}</td>
+            </tr>
+            <tr>
+                <th>Countvisitor</th>
+                <td>{{ video.countVisitor }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ video.status }}</td>
+            </tr>
+            <tr>
+                <th>Likes</th>
+                <td>{{ video.likes }}</td>
+            </tr>
+            <tr>
+                <th>Dislikes</th>
+                <td>{{ video.dislikes }}</td>
+            </tr>
+            <tr>
+                <th>Featured</th>
+                <td>{{ video.featured }}</td>
+            </tr>
+            <tr>
+                <th>Mainfeatured</th>
+                <td>{{ video.mainFeatured }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_video_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_video_edit', { 'id': video.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

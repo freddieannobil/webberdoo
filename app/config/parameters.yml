@@ -1,0 +1,14 @@
+parameters:
+    mailer_transport: sendmail
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    secret: jkhkjh786jhgjhgjhgjhgjhgjhgjjhkjjk
+
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: null
+    database_user: root
+    database_password: null
+
+    theme_name: App

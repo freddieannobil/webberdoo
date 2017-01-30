@@ -1,0 +1,42 @@
+
+{% extends 'App/layout/inc/admin_box_layout.html.twig' %}
+
+
+{% block title %}User Edit{% endblock %}
+
+{% block form %}
+    <!-- form start -->
+
+    {{ form_start(edit_form) }}
+<div class="box-body">
+    {{ form_row(edit_form.email) }}
+    {{ form_row(edit_form.username) }}
+    {{ form_row(edit_form.first_name) }}
+    {{ form_row(edit_form.last_name) }}
+
+    {{ form_row(edit_form.plainPassword.first, {'label': 'Password'}) }}
+    {{ form_row(edit_form.plainPassword.second, {'label': 'Repeat Password'}) }}
+
+    <button type="submit" class="btn btn-primary btn-lg btn-block" formnovalidate>Edit</button>
+
+
+    {{ form_end(edit_form) }}
+    </div>
+
+{% endblock %}
+
+{% block links %}
+    <ul>
+        <li>
+            <a href="{{ path('admin_user_index') }}" class="btn btn-default btn-lg btn-block">Back to the user list</a>
+        </li>
+        <p></p>
+        <li>
+
+            {{ form_start(delete_form) }}
+            <button type="submit" class="btn btn-primary btn-lg btn-block" formnovalidate><i class="fa fa-trash" aria-hidden="true"></i></button>
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
+

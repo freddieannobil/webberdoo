@@ -1,0 +1,32 @@
+<section id="gravatar">
+    <img src="{{ gravaatar_service.gravatar(user.email) }}" alt="webberdoo">
+</section>
+<section class="widget-area">
+    <div class="header_bg">
+        <p>My details</p>
+    </div>
+    <div class="widget-desc">
+        Username: {{ user.username }}
+        <p>Name: {{ user.firstName }} {{ user.lastName }}</p>
+
+            {% if  app.user.slug == slug %}
+                <p><a href="{{ path('user_home_edit', {'slug': app.user.slug}) }}"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a></p>
+                <p><a href="{{ path('user_submit_video', {'slug': app.user.slug}) }}" class="button">SUBMIT A VIDEO</a></p>
+            {% endif %}
+
+    </div>
+</section>
+{% if widget_service.parse('home_side') %}
+    {% for widget in widget_service.parse('home_side') %}
+        <!---->
+        <section class="widget-area">
+            <div class="header_bg">
+                <p>{{ widget.title|title }}</p>
+            </div>
+            <div class="widget-desc">
+                {{ widget.body }}
+            </div>
+        </section>
+        <!---->
+    {% endfor %}
+{% endif %}

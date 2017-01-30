@@ -1,0 +1,37 @@
+{% extends 'App/layout/inc/admin_table_layout.html.twig' %}
+
+
+{% block title %}Categories{% endblock %}
+
+{% block table_head %}
+    <th>Id</th>
+    <th>Name</th>
+    <th>Show on Home Page</th>
+    <th></th>
+{% endblock %}
+
+{% block table_data %}
+    {% for category in categories %}
+        <tr>
+            <td><a href="{{ path('admin_category_show', { 'id': category.id }) }}">{{ category.id }}</a></td>
+                <td>{{ category.name }}</td>
+                <td>{{ category.showOnHome }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_category_edit', { 'id': category.id }) }}" class="btn btn-primary">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_category_new') }}" class="btn btn-primary">create a new category</a>
+        </li>
+    </ul>
+{% endblock %}
+
+

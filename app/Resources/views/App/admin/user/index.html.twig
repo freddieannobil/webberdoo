@@ -1,0 +1,40 @@
+{% extends 'App/layout/inc/admin_table_layout.html.twig' %}
+
+
+{% block title %}User List{% endblock %}
+
+{% block table_head %}
+    <th>Id</th>
+    <th>Email</th>
+    <th>Roles</th>
+    <th></th>
+{% endblock %}
+
+{% block table_data %}
+
+    {% for user in users %}
+        <tr>
+            <td><a href="{{ path('admin_user_edit', { 'id': user.id }) }}">{{ user.id }}</a></td>
+            <td>{{ user.email }}</td>
+            <td>
+                {% for role in user.roles %}
+                    {{ role }}
+                {% endfor %}
+            </td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('admin_user_edit', { 'id': user.id }) }}" class="btn btn-primary">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_user_new') }}" class="btn btn-primary">create a new user</a>
+        </li>
+    </ul>
+{% endblock %}

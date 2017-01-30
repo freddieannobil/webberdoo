@@ -1,0 +1,240 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <title>{% block title %} kk{{ setting_service.siteName }}{% endblock %}</title>
+    {% block stylesheets %}
+        <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="{{ absolute_url(asset('assets/default/css/sinister.css')) }}">
+        <link rel="stylesheet" type="text/css" href="{{ absolute_url(asset('assets/default/css/notif.css')) }}">
+        <link rel="stylesheet" href="{{ absolute_url(asset('assets/default/css/app.css')) }}">
+        <link rel="stylesheet" href="{{ absolute_url(asset('assets/default/css/sweetalert.css') )}}">
+        <link rel="stylesheet" href="{{ absolute_url(asset('assets/default/css/font-awesome.min.css') )}}">
+
+    {% endblock %}
+    <script src="{{ absolute_url(asset('assets/default/js/jquery.js')) }}"></script>
+    <script src="{{ absolute_url(asset('assets/default/js/sweetalert.min.js') )}}"></script>
+
+</head>
+<body>
+
+{% if app.session.flashBag.has('success_registration') %}
+    {% for msg in app.session.flashBag.get('success_registration') %}
+        {{ msg|raw }}
+    {% endfor %}
+{% endif %}
+
+<header class="row">
+    <div class="large-6 medium-6 columns">
+        <h1>{{ setting_service.siteName }}</h1>
+    </div>
+    <div class="large-6 medium-6 columns">
+        <form action="" method="get">
+            <div class="input-group">
+                <input type="text" name="term" class="input-group-field">
+                <div class="input-group-button">
+                    <button type="submit" class="button" ><i class="fa fa-search" aria-hidden="true"></i></button>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</header>
+
+<!---->
+{{navmenu_service.parseMainMenu|raw }}
+<!---->
+
+
+{% block body %}{% endblock %}
+
+<footer class="footer">
+
+    <div class="row">
+        <div class="large-4 medium-4 columns">
+            {% if widget_service.parse('footer_left') %}
+                {% for widget in widget_service.parse('footer_left') %}
+                    <!---->
+                    <section class="widget-area">
+                        <div class="header_bg">
+                            <p>{{ widget.title|title }}</p>
+                        </div>
+                        <div class="footer-widget-desc">
+                            {{ widget.body|raw }}
+                        </div>
+                    </section>
+                    <!---->
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="large-4 medium-6 columns">
+            {% if widget_service.parse('footer_centre') %}
+                {% for widget in widget_service.parse('footer_centre') %}
+                    <!---->
+                    <section class="widget-area">
+                        <div class="header_bg">
+                            <p>{{ widget.title|title }}</p>
+                        </div>
+                        <div class="footer-widget-desc">
+                            {{ widget.body|raw }}
+                        </div>
+                    </section>
+                    <!---->
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="large-4 medium-4 columns">
+            {% if widget_service.parse('footer_right') %}
+                {% for widget in widget_service.parse('footer_right') %}
+                    <!---->
+                    <section class="widget-area">
+                        <div class="header_bg">
+                            <p>{{ widget.title|title }}</p>
+                        </div>
+                        <div class="footer-widget-desc">
+                            {{ widget.body|raw }}
+                        </div>
+                    </section>
+                    <!---->
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="small-12 columns">
+
+            <p class="slogan">{{ setting_service.siteName }}</p>
+
+            <p class="links">
+                {% if navmenu_service.parseFooterPageMenu %}
+                    {% for page in navmenu_service.parseFooterPageMenu %}
+                        <a href="{{ path('single_page', {'slug': page.slug}) }}">{{ page.name|title }}</a>
+                     {% endfor %}
+                {% endif %}
+            </p>
+            <p class="copywrite">{{ setting_service.footerText }}</p>
+            <p class="copywrite">Script by <a href="http://app/Resources/assetsberdoo.co.uk" target="_blank">Webberdoo.co.uk</a> © 2017</p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+{% block javascripts %}
+    <script>
+        var site_url = "{{ path('homepage') }}";
+    </script>
+    <script src="{{ absolute_url(asset('assets/default/js/app.min.js') ) }}"></script>
+    <script src="{{ absolute_url(asset('assets/default/js/what-input.js') ) }}"></script>
+    <script src="{{ absolute_url(asset('assets/default/js/foundation.js') ) }}"></script>
+    <script src="{{ absolute_url(asset('assets/default/js/favorite.js') ) }}"></script>
+    <script src="{{ absolute_url(asset('assets/default/js/notif.js') ) }}"></script>
+    <script src="{{ absolute_url(asset('assets/default/js/notifAlerts.js') ) }}"></script>
+    <script src="{{ absolute_url(asset('assets/default/js/app.js')) }}"></script>
+    <script src="{{ absolute_url(asset('assets/default/js/lity.js')) }}" ></script>
+
+    <script type="text/javascript" src="{{ absolute_url(asset('assets/default/js/slick.min.js')) }}"></script>
+    <script>
+        var spinner = '<i class="fa fa-spinner fa-spin fa-3x"></i>';
+    </script>
+
+    <script>
+        $('.enm-carousal').slick({
+            dots: true,
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            rows: 2,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                }
+            ]
+
+        });
+    </script>
+    <script>
+        $('.autoplay-carousal').slick({
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            autoplay: true,
+            autoplaySpeed: 4000,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                        dots: false
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+                ]
+
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).on('ready', function() {
+            $(".regular").slick({
+                dots: true,
+                infinite: true,
+                slidesToShow: 3,
+                slidesToScroll: 3
+            });
+            $(".center").slick({
+                dots: true,
+                infinite: true,
+                centerMode: true,
+                slidesToShow: 3,
+                slidesToScroll: 3
+            });
+            $(".variable").slick({
+                dots: true,
+                infinite: true,
+                variableWidth: true
+            });
+        });
+    </script>
+
+{% endblock %}
+</body>
+</html>

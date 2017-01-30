@@ -1,0 +1,68 @@
+{% extends 'App/layout/admin_base.html.twig' %}
+
+{% block body %}
+    <h1>Cjitem</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ cJItem.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ cJItem.title }}</td>
+            </tr>
+            <tr>
+                <th>Producturl</th>
+                <td>{{ cJItem.productUrl }}</td>
+            </tr>
+            <tr>
+                <th>Stockstatus</th>
+                <td>{{ cJItem.stockStatus }}</td>
+            </tr>
+            <tr>
+                <th>Regularprice</th>
+                <td>{{ cJItem.regularPrice }}</td>
+            </tr>
+            <tr>
+                <th>Saleprice</th>
+                <td>{{ cJItem.salePrice }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ cJItem.price }}</td>
+            </tr>
+            <tr>
+                <th>Sku</th>
+                <td>{{ cJItem.sku }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ cJItem.image }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ cJItem.description }}</td>
+            </tr>
+            <tr>
+                <th>Featured</th>
+                <td>{% if cJItem.featured %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_cjitem_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_cjitem_edit', { 'id': cJItem.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

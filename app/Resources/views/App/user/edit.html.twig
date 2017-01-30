@@ -1,0 +1,46 @@
+{% extends 'App/layout/base.html.twig' %}
+{% form_theme form 'FD/form/errors.html.twig' %}
+{% block title %}Webberdoo{% endblock %}
+
+{% block body %}
+
+    <section class="page-header">
+
+
+        <section class="row">
+        {% if user %}
+            <side class="large-3 medium-3 columns">
+                {% include 'App/layout/inc/user_home_side.html.twig' %}
+            </side>
+
+            <main class="large-9 medium-9 columns">
+
+                    <h2><span class="icon"><i class="fa fa-film" aria-hidden="true"></i></span> Edit Your Details</h2>
+
+                <div class="profile">
+                    {{ form_start(edit_form) }}
+                    {{ form_row(edit_form.email) }}
+                    {{ form_row(edit_form.username) }}
+                    {{ form_row(edit_form.first_name) }}
+                    {{ form_row(edit_form.last_name) }}
+                    {{ form_row(edit_form.plainPassword.first, {'label': 'Password'}) }}
+                    {{ form_row(edit_form.plainPassword.second, {'label': 'Repeat Password'}) }}
+
+                    <button type="submit" class="button" formnovalidate>Edit</button>
+
+
+                    {{ form_end(edit_form) }}
+                </div>
+
+
+            </main>
+        {% else %}
+               <p><h4> Oh no, that url looks wrong. </h4></p>
+        {% endif %}
+        </section>
+
+
+    </section>
+
+
+{% endblock %}

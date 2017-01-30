@@ -1,0 +1,44 @@
+
+{% extends 'App/layout/inc/admin_table_layout.html.twig' %}
+
+
+{% block title %}Api Keys{% endblock %}
+
+{% block table_head %}
+    <th>Id</th>
+    <th>Facebookpublickey</th>
+    <th>Facebooksecretkey</th>
+    <th>Twitterpublickey</th>
+    <th>Twittersecretkey</th>
+    <th>Youtubeapikey</th>
+    <th>Disqusshortname</th>
+    <th></th>
+{% endblock %}
+
+{% block table_data %}
+    {% for apiKey in apiKeys %}
+        <tr>
+            <td><a href="{{ path('admin_apikey_show', { 'id': apiKey.id }) }}">{{ apiKey.id }}</a></td>
+            <td>{{ apiKey.facebookPublicKey }}</td>
+            <td>{{ apiKey.facebookSecretKey }}</td>
+            <td>{{ apiKey.twitterPublicKey }}</td>
+            <td>{{ apiKey.twitterSecretKey }}</td>
+            <td>{{ apiKey.youtubeApiKey }}</td>
+            <td>{{ apiKey.disqusShortname }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('admin_apikey_edit', { 'id': apiKey.id }) }}" class="btn btn-primary">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+{% endfor %}
+    <ul>
+        <li>
+            <a href="{{ path('admin_apikey_new') }}" class="btn btn-primary">api key</a>
+        </li>
+    </ul>
+{% endblock %}
+

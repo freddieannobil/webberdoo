@@ -1,0 +1,26 @@
+
+{% extends 'App/layout/inc/admin_box_layout.html.twig' %}
+
+
+
+{% block title %}API Key Creation{% endblock %}
+
+{% block form %}
+    <!-- form start -->
+    {{ form_start(form) }}
+    <div class="box-body">
+        {{ form_widget(form) }}
+
+        <button type="submit" class="btn btn-primary btn-lg btn-block" formnovalidate>Create</button>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block links %}
+    <ul>
+        <li>
+            <a href="{{ path('admin_apikey_index') }}" class="btn btn-default btn-lg btn-block">Back to the video list</a>
+        </li>
+    </ul>
+{% endblock %}
+

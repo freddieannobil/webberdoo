@@ -1,0 +1,52 @@
+{% extends 'App/layout/admin_base.html.twig' %}
+
+{% block body %}
+    <h1>Apikey</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ apiKey.id }}</td>
+            </tr>
+            <tr>
+                <th>Facebookpublickey</th>
+                <td>{{ apiKey.facebookPublicKey }}</td>
+            </tr>
+            <tr>
+                <th>Facebooksecretkey</th>
+                <td>{{ apiKey.facebookSecretKey }}</td>
+            </tr>
+            <tr>
+                <th>Twitterpublickey</th>
+                <td>{{ apiKey.twitterPublicKey }}</td>
+            </tr>
+            <tr>
+                <th>Twittersecretkey</th>
+                <td>{{ apiKey.twitterSecretKey }}</td>
+            </tr>
+            <tr>
+                <th>Youtubeapikey</th>
+                <td>{{ apiKey.youtubeApiKey }}</td>
+            </tr>
+            <tr>
+                <th>Disqusshortname</th>
+                <td>{{ apiKey.disqusShortname }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_apikey_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_apikey_edit', { 'id': apiKey.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

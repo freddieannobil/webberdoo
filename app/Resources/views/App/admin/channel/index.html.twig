@@ -1,0 +1,36 @@
+
+
+{% extends 'App/layout/inc/admin_table_layout.html.twig' %}
+
+
+{% block title %}Videos{% endblock %}
+
+{% block table_head %}
+    <th>Id</th>
+    <th>Channel ID</th>
+    <th>Title</th>
+    <th>Published On</th>
+    <th>Defaultthumbnail</th>
+    <th></th>
+{% endblock %}
+
+{% block table_data %}
+    {% for channel in channels %}
+        <tr>
+            <td><a href="{{ path('admin_channel_show', { 'id': channel.id }) }}">{{ channel.id }}</a></td>
+            <td>{{ channel.channelId }}</td>
+            <td>{{ channel.title }}</td>
+            <td>{{ channel.publishedOn }}</td>
+            <td><img src="{{ channel.defaultThumbnail }}" alt="{{ channel.title }}"></td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('admin_channel_edit', { 'id': channel.id }) }}" class="btn btn-primary">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+{% endblock %}
+

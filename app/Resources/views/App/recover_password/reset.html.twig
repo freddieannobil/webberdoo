@@ -1,0 +1,39 @@
+{% extends 'App/layout/base.html.twig' %}
+{% form_theme edit_form 'FD/form/errors.html.twig' %}
+
+{% block title %}Webberdoo{% endblock %}
+
+{% block body %}
+
+    <section class="page-header">
+        <div class="row">
+            <div class="small-6 large-centered columns">
+                <div id="auth">
+
+                <h1><i class="fa fa-user" aria-hidden="true"></i> Enter New Password</h1>
+                    {% if app.session.flashBag.has('password_user_error') %}
+                        <div class="label warning">
+                            {% for msg in app.session.flashBag.get('password_user_error') %}
+                                {{ msg|raw }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {{ form_start(edit_form) }}
+                    {{ form_row(edit_form.email) }}
+                    {{ form_row(edit_form.username) }}
+                    {{ form_row(edit_form.first_name) }}
+                    {{ form_row(edit_form.last_name) }}
+                    {{ form_row(edit_form.plainPassword.first, {'label': 'Password'}) }}
+                    {{ form_row(edit_form.plainPassword.second, {'label': 'Repeat Password'}) }}
+
+                    <button type="submit" class="button" formnovalidate>Submit</button>
+
+
+                    {{ form_end(edit_form) }}
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+{% endblock %}

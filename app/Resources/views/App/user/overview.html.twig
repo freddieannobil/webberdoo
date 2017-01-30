@@ -1,0 +1,58 @@
+{% extends 'App/layout/base.html.twig' %}
+
+{% block title %}Webberdoo{% endblock %}
+
+{% block body %}
+
+    <section class="page-header">
+
+
+        <section class="row">
+        {% if user %}
+            <side class="large-3 medium-3 columns">
+                {% include 'App/layout/inc/user_home_side.html.twig' %}
+            </side>
+
+            <main class="large-9 medium-9 columns">
+                {% if videos %}
+                    <h2><span class="icon"><i class="fa fa-film" aria-hidden="true"></i></span> {{ user.username|title }} Videos ({{ total }})</h2>
+                        <div class="row small-up-1 medium-up-2 large-up-3">
+                            {% for vid in videos %}
+                                <div class="column column-block">
+
+                                    <div class="ImageWrapper">
+                                        <img class="img-responsive img-rounded" src="{{ vid.thumbnailMedium }}" alt="{{ vid.title}}">
+                                        <div class="ImageOverlayH"></div>
+                                        <div class="CStyleB">
+                                            <a href="{{ path('single_video', {'slug': vid.slug}) }}" class="vid-icon"><i class="fa fa-play-circle fa-3x" aria-hidden="true"></i></a>
+                                        </div>
+                                    </div>
+
+                                    <span class="title">{{ vid.title|slice(0, 25)}}...</span>
+
+                                    <div class="panel clearfix">
+                                        <span class="left details">
+                                        <i class="fa fa-eye" aria-hidden="true"></i> {{ vid.countVisitor }}
+                                         <i class="fa fa-clock-o" aria-hidden="true"></i> {{ vid.publishedAt|time_ago_in_words(false, true) }}
+                                    </span>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    <div class="navigation">
+                        {{ paginationLinks|raw }}
+                    </div>
+                    {% else %}
+                                <p><h4> {{ user.username }} has no videos to show at the moment. </h4></p>
+                {% endif %}
+            </main>
+        {% else %}
+               <p><h4> Oh no, that url looks wrong. </h4></p>
+        {% endif %}
+        </section>
+
+
+    </section>
+
+
+{% endblock %}

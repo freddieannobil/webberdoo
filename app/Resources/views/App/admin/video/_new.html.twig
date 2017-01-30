@@ -1,0 +1,30 @@
+{% extends 'CJ/layout/:CJ/layout/inc/admin_box_layout.html.twig' %}
+
+{% block body %}
+
+<div class="col-md-6">
+    <!-- general form elements -->
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Video Import</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        {{ form_start(form) }}
+        <div class="box-body">
+        {{ form_widget(form) }}
+
+        <button type="submit" class="btn btn-primary" formnovalidate>Create</button>
+        </div>
+        {{ form_end(form) }}
+    </div>
+    <!-- /.box -->
+</div>
+<div class="col-md-6">
+    <ul>
+        <li>
+            <a href="{{ path('admin_video_index') }}" class="btn btn-default">Back to the video list</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}

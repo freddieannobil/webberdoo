@@ -1,0 +1,40 @@
+{% extends 'App/layout/inc/admin_table_layout.html.twig' %}
+
+
+{% block title %}Settings{% endblock %}
+
+{% block table_head %}
+    <th>Id</th>
+    <th>Siteurl</th>
+    <th>Sitename</th>
+    <th>Siteemail</th>
+    <th>Footertext</th>
+    <th></th>
+{% endblock %}
+
+{% block table_data %}
+
+    {% for setting in settings %}
+        <tr>
+            <td><a href="{{ path('admin_setting_edit', { 'id': setting.id }) }}">{{ setting.id }}</a></td>
+            <td>{{ setting.siteUrl }}</td>
+            <td>{{ setting.siteName }}</td>
+            <td>{{ setting.siteEmail }}</td>
+            <td>{{ setting.footerText }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('admin_setting_edit', { 'id': setting.id }) }}" class="btn btn-primary">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_setting_new') }}" class="btn btn-primary">Settings</a>
+        </li>
+    </ul>
+{% endblock %}

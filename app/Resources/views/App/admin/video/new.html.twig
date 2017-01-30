@@ -1,0 +1,56 @@
+{% extends 'App/layout/inc/admin_box_layout.html.twig' %}
+
+
+
+{% block title %}Video Creation{% endblock %}
+
+{% block form %}
+    <!-- form start -->
+    {{ form_start(form) }}
+    <div class="box-body">
+
+        {{ form_label(form.status) }}
+        {{ form_widget(form.status) }}
+        {{ form_errors(form.status) }}
+<p></p>
+        {{ form_label(form.import_feed) }}
+        {{ form_widget(form.import_feed) }}
+        {{ form_errors(form.import_feed) }}
+        <span data-bind="text: import_feed.valiationMessage, css: import_feed.validationClass"></span>
+        <p></p>
+        {{ form_label(form.category) }}
+        {{ form_widget(form.category) }}
+        {{ form_errors(form.category) }}
+        <p></p>
+        <div data-bind="if: import_feed() == 'single_video'">
+        {{ form_label(form.youtube_url) }}
+        {{ form_widget(form.youtube_url) }}
+        {{ form_errors(form.youtube_url) }}
+        <p></p>
+        </div>
+        <div data-bind="if: import_feed() == 'channel'">
+        {{ form_label(form.channel_id) }}
+        {{ form_widget(form.channel_id) }}
+        {{ form_errors(form.channel_id) }}
+        <p></p>
+        </div>
+        <div data-bind="if: import_feed() == 'channel' || import_feed() == 'keyword_search'">
+        {{ form_label(form.add_keywords) }}
+        {{ form_widget(form.add_keywords) }}
+        {{ form_errors(form.add_keywords) }}
+        <p></p>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block" formnovalidate>Create</button>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block links %}
+    <ul>
+        <li>
+            <a href="{{ path('admin_video_index') }}" class="btn btn-default btn-lg btn-block">Back to the video list</a>
+        </li>
+    </ul>
+{% endblock %}
+
+
