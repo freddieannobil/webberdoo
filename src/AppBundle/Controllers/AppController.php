@@ -16,7 +16,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class AppController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/", name="homepage")
      *
      * @return Response
      */
