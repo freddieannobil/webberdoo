@@ -1,9 +1,9 @@
 {
-  "name": "webberdoo/wdooframework",
-  "description": "Wdoo Framework is built on top of the silex micro framework. Run - composer create-project webberdoo/wdooframework YOUR-FOLDER dev-master",
-  "homepage": "https://github.com/webberdoo/wdooframework",
+  "name": "webberdoo/webberdoo",
+  "description": "The WebberdooFramework is a PHP Micro Framework built with Symfony. ",
+  "homepage": "https://github.com/webberdoo/webberdoo",
   "keywords": [
-    "framework", "silex", "symfony"
+    "Framework", "PHP", "Symfony"
   ],
   "license": "MIT",
   "authors": [
